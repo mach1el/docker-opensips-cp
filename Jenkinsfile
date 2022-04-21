@@ -8,8 +8,7 @@ pipeline{
 
   stages {
       
-      stage('gitclone') {
-
+    stage('gitclone') {
       steps {
         git 'https://github.com/mach1el/docker-opensips-cp.git'
       }
