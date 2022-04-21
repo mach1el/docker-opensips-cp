@@ -10,14 +10,15 @@ pipeline{
       
     stage('gitclone') {
       steps {
-        git 'https://github.com/mach1el/docker-opensips-cp.git'
+        git branch: '3.2',
+          url: 'https://github.com/mach1el/docker-opensips-cp.git'
       }
     }
 
     stage('Build') {
 
       steps {
-        sh 'docker build -t mich43l/opensips-cp:latest .'
+        sh 'docker build -t mich43l/opensips-cp:3.2 .'
       }
     }
 
@@ -39,14 +40,14 @@ pipeline{
     stage('Push') {
 
       steps {
-        sh 'docker push mich43l/opensips-cp:latest'
+        sh 'docker push mich43l/opensips-cp:3.2'
       }
     }
 
     stage('Clean') {
 
       steps {
-        sh 'docker rmi mich43l/opensips-cp:latest'
+        sh 'docker rmi mich43l/opensips-cp:3.2'
       }
     }
   }
