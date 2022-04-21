@@ -44,6 +44,8 @@ RUN wget https://raw.githubusercontent.com/mach1el/ansible-role-opensips/main/te
 RUN chown -R www-data:www-data /var/www/html/opensips-cp/
 
 COPY configs/opensips-cp.conf /etc/apache2/sites-available/opensips-cp.conf
+COPY configs/apache2.conf /etc/apache2/apache2.conf
+
 RUN a2ensite opensips-cp
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
