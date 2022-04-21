@@ -1,6 +1,6 @@
 pipeline{
 
-  agent {label 'linux'}
+  agent {label 'master'}
   
   triggers {
     pollSCM('*/2 * * * *')
