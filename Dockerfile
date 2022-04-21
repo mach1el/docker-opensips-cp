@@ -37,6 +37,10 @@ RUN apt-get update -qq && \
     && rm -rf /var/lib/apt/lists
 
 RUN git clone --branch=8.3.2 https://github.com/OpenSIPS/opensips-cp.git /var/www/html/opensips-cp
+RUN wget https://raw.githubusercontent.com/mach1el/ansible-role-opensips/main/templates/config/boxes.global.inc.php.j2 -O /var/www/html/opensips-cp/config/boxes.global.inc.php
+RUN wget wget https://raw.githubusercontent.com/mach1el/ansible-role-opensips/main/templates/config/db.inc.php.j2 -O /var/www/html/opensips-cp/config/db.inc.php
+RUN wget https://raw.githubusercontent.com/mach1el/ansible-role-opensips/main/templates/config/cdr_viewer.php.j2 -O /var/www/html/opensips-cp/config/tools/system/cdrviewer/local.inc.php
+
 RUN chown -R www-data:www-data /var/www/html/opensips-cp/
 
 COPY configs/opensips-cp.conf /etc/apache2/sites-available/opensips-cp.conf
